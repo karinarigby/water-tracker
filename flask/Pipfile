@@ -16,6 +16,8 @@ flask-sqlalchemy = "*"
 marshmallow-sqlalchemy = "*"
 flask-migrate = "*"
 gunicorn = "*"
+flask-bootstrap = "*"
+flask-login = "*"
 
 [dev-packages]
 
