@@ -9,15 +9,7 @@ class Config(object):
     """
 
     DEBUG = True
-    # set below to true when you are using sqlachemy's event system. otherwise
-    # disable because of significant cost
-    # SQLALCHEMY_URI = 'mysql://root:GCMNAdb-9995@mysql:3306/gcmna'
-    # SQLALCHEMY_DATABASE_URI = 'mysql://root:GCMNAdb-9995@mysql:3306/gcmna' # this should go to the docker container
-
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-# actually maybe I shouldn't add this to version control but whatever I'll fix it one day
-
 
 class DevelopmentConfig(Config):
     """
@@ -41,7 +33,6 @@ class TestingConfig(Config):
     """
     Testing configurations
     """
-
     TESTING = True
     SQLALCHEMY_ECHO = False
 
