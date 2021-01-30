@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  nginx:
+    build: ./nginx
+    image: nginx
+    container_name: nginx
+    environment:
+      APP_NAME: "watertracker"
+      SERVICE_NAME: "watertracker"
+    volumes:
+      - nginxdata:/var/log/nginx
+    depends_on: 
+      - flask
+    restart: unless-stopped
+    networks: 
+      - frontend
+    ports:
+      - "80:80"
+
+  flask:
+    build: ./flask
+    image: flask
+    container_name: flask
+    environment: 
+      FLASK_ENV: "development"
+    networks: 
+      - frontend
+    volumes:
+      - ./flask:/var/www/flask
+
+volumes:
+  appdata:
+    driver: local
+  nginxdata:
+    driver: local
+
+networks:
+  frontend:
+    driver: bridge
