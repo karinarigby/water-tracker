@@ -1,0 +1,9 @@
+.intro-header {
+    padding-top: 3.125em;
+    padding-bottom: 3.125em;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../plant.jpg) no-repeat center center;
+    background-size: cover;
+    height: 100%;
+}
