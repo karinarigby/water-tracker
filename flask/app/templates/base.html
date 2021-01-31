@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ title }} | Water Tracker Garden App</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand topnav" href="{{ url_for('home.homepage') }}">Water Tracker Garden</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                  <li><a href="{{ url_for('home.register')  }}">How It Works</a></li>
+                  {% if current_user.is_authenticated %}
+                    {% if current_user.is_admin %}
+                      <li><a href="{{ url_for('home.admin_dashboard') }}">Users</a></li>
+                      <li><a href="{{ url_for('admin.list_departments') }}">Plants</a></li>
+                    {% else %}
+                      <li><a href="{{ url_for('home.dashboard') }}">Dashboard</a></li>
+                      <li><a href="{{ url_for('home.progress') }}">Progress</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                    <li><a><i class="fa fa-user"></i>  Hi, {{ current_user.username }}!</a></li>
+                  {% else %}
+                    <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
+                    <li><a href="{{ url_for('auth.register') }}">Sign Up</a></li>
+                    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                  {% endif %}
+              </ul>
+          </div>
+        </div>
+    </nav>
+    <div class="wrapper">
+      {% block body %}
+      {% endblock %}
+      <div class="push"></div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
