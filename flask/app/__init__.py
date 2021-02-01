@@ -1,8 +1,11 @@
+#app/__init__.py
+
+from flask import Flask, render_template
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap
 from flask_marshmallow import Marshmallow, fields
-
+from flask_sqlalchemy import SQLAlchemy
 from config import app_config
 
 db = SQLAlchemy()
