@@ -16,22 +16,21 @@ It's a LEMP Stack, that is, (**e**)NGINX, **M**ySQL, and **P**ython (Flask).
 
 The Dockerized solution has an NGINX container exposed to the outside that forwards to the Flask container.
 
-Here's the current structure of how it works:
+Here's the current deployment structure, with the Database ER diagram on the right:
 
-<img src="/docs/AWS-project-structure-diagram.png" width="150">
+<img src="/docs/AWS-project-structure-diagram.png" width="300"> <img src="/docs/Database-ER-diagram.png" width="300">
 
-Here's the DB ER Diagram:
-
-<img src="/docs/Database-ER-diagram.png" width="150">
+Both of these diagrams may change as the app grows in complexity.
 
 ## To Do:
 ### Devops:
+  - Get a 1-node Docker Swarm going instead of using docker-compose
   - Configure the EC2 instance so that it always runs the app as a service
-  - Integrate CI/CD auto deployment
   
 ### Admin:
   - Create error template pages
   - Create "view users" and "view plants" templates
+  - Create edit/delete views for users, logs, and plants
   
 ### Auth:
   - Enable user and admin login
@@ -39,7 +38,7 @@ Here's the DB ER Diagram:
 
 ### User Key Actions:
   - Add a new water log entry
-  - View today's progress
+  - View today's water consumption goal progress
   - View week/month's progress and activity
   - Set a daily goal
   - Edit a daily goal
