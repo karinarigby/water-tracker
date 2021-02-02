@@ -18,11 +18,11 @@ The Dockerized solution has an NGINX container exposed to the outside that forwa
 
 Here's the current structure of how it works:
 
-![](/docs/AWS-project-structure-diagram.png =250x)
+<img src="/docs/AWS-project-structure-diagram.png" width="150">
 
 Here's the DB ER Diagram:
 
-![](/docs/Database-ER-diagram.png =250x)
+<img src="/docs/Database-ER-diagram.png" width="150">
 
 ## To Do:
 ### Devops:
