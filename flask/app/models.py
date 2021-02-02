@@ -21,7 +21,7 @@ class Plant(db.Model):
     __tablename__ = "plants"
 
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String)
+    type = db.Column(db.String(50))
 
     def __repr__(self):
         return "<Plant: {}>".format(self.name)
