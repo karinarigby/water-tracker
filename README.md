@@ -21,6 +21,7 @@ Here's the current structure of how it works:
 ![](/docs/AWS-project-structure-diagram.png)
 
 Here's the DB ER Diagram:
+
 ![](/docs/Database ER diagram.png)
 
 ## To Do:
