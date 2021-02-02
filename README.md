@@ -6,24 +6,60 @@ Every day the user gets a new seed. As they log their water intake throughout th
 
 Garden needs the ongoing watering by daily logging, otherwise they'll whither away one by one until you have to start over.
 
+##  Demo
+
+Take a look [here](http://ec2-3-96-179-242.ca-central-1.compute.amazonaws.com) for a running demo.
+
 ##  Tech Stack
 
 It's a LEMP Stack, that is, (**e**)NGINX, **M**ySQL, and **P**ython (Flask).
 
 The Dockerized solution has an NGINX container exposed to the outside that forwards to the Flask container.
-  
-##  Demo
 
-Take a look [here](http://ec2-3-96-179-242.ca-central-1.compute.amazonaws.com) for a running demo.
+Here's the current structure of how it works:
+
+![](/docs/AWS-project-structure-diagram.png)
+
+Here's the DB ER Diagram:
+![](/docs/Database ER diagram.png)
+
+## To Do:
+### Devops:
+  - Configure the EC2 instance so that it always runs the app as a service
+  - Integrate CI/CD auto deployment
+  
+### Admin:
+  - Create error template pages
+  - Create "view users" and "view plants" templates
+  
+### Auth:
+  - Enable user and admin login
+  - Enable OAuth (stretch)
+
+### User Key Actions:
+  - Add a new water log entry
+  - View today's progress
+  - View week/month's progress and activity
+  - Set a daily goal
+  - Edit a daily goal
+  - View plants
+  - Add friend
+  - Challenge friend
+  
+### Plant Key Actions:
+  - Add plant to user's garden upon user's daily goal completed
+  - Grow into different stages of plant as goals progress
+  - Whither from user's garden if not 'watered' frequently enough
+    - Evolve into each stage of 'dying'
 
 ## What's Missing:
   - CI/CD config setup (like CircleCI)
-  - AWS S3 integration for the static files
-  - Taking advantage of AWS's ECS and ECR.
+  - AWS S3 content delivery for the static files
+  - Taking advantage of AWS's ECS and ECR for Docker images
   - DNS config with AWS Route 53
   - Fun plant animations and evolutions
   - AJAX calls to update the pages without refreshing
-  - Functional tests
+  - Functional tests (Like with Selenium)
 
 ##  Credits and License
 I don't really know how to do the specific license attributions correctly, but I followed along with the tutorial series by Mbithe Nzomo to get the initial structure of the Flask part of the project. Then I expanded upon it by adapting the view functions according to my needs, adding Pytest test package, Docker settings, etc. 
