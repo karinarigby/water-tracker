@@ -22,7 +22,7 @@ Here's the current structure of how it works:
 
 Here's the DB ER Diagram:
 
-![](/docs/Database ER diagram.png)
+![](/docs/Database-ER-diagram.png)
 
 ## To Do:
 ### Devops:
