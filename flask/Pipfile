@@ -4,20 +4,22 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask-marshmallow = "*"
+atomicwrites = "*"
+flask = "*"
+flask-bootstrap = "*"
 flask-httpauth = "*"
-pytest-xdist = "*"
+flask-login = "*"
+flask-marshmallow = "*"
+flask-migrate = "*"
+flask-mysqldb = "*"
+flask-sqlalchemy = "*"
+gunicorn = "*"
+marshmallow-sqlalchemy = "*"
 pytest = "*"
 pytest-cov = "*"
-pytest-randomly = "*"
 pytest-mock = "*"
-flask = "*"
-flask-sqlalchemy = "*"
-marshmallow-sqlalchemy = "*"
-flask-migrate = "*"
-gunicorn = "*"
-flask-bootstrap = "*"
-flask-login = "*"
+pytest-randomly = "*"
+pytest-xdist = "*"
 
 [dev-packages]
 
