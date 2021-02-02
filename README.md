@@ -8,24 +8,25 @@ Garden needs the ongoing watering by daily logging, otherwise they'll whither aw
 
 ##  Tech Stack
 
-It's a LEMP Stack, minus the Linux part this time. :wink: EMP - That is, (**e**)NGINX, **M**ySQL, and **P**ython (Flask).
+It's a LEMP Stack, that is, (**e**)NGINX, **M**ySQL, and **P**ython (Flask).
 
-We got some Pytest stuff going on for Unit testing the models.
-
-The Dockerized solution has an NGINX container and a Flask container.
+The Dockerized solution has an NGINX container exposed to the outside that forwards to the Flask container.
   
 ##  Demo
 
-  
+Take a look [here](http://ec2-3-96-179-242.ca-central-1.compute.amazonaws.com) for a running demo.
+
 ## What's Missing:
-  - CI/CD config files
-  - AWS S3 integration
-  - Fun plant animations
+  - CI/CD config setup (like CircleCI)
+  - AWS S3 integration for the static files
+  - Taking advantage of AWS's ECS and ECR.
+  - DNS config with AWS Route 53
+  - Fun plant animations and evolutions
   - AJAX calls to update the pages without refreshing
-  
+  - Functional tests
 
 ##  Credits and License
-I don't really know how to do the license attributions correctly, but I followed along with the tutorial series by Mbithe Nzomo to get the initial structure of this project going. Then I expanded upon it by adapting the view functions to my needs, adding Pytest test package, Docker settings, etc. 
+I don't really know how to do the specific license attributions correctly, but I followed along with the tutorial series by Mbithe Nzomo to get the initial structure of the Flask part of the project. Then I expanded upon it by adapting the view functions according to my needs, adding Pytest test package, Docker settings, etc. 
 
 Mbithe's project can be found [here](https://github.com/mbithenzomo/project-dream-team-three).
 
