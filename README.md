@@ -23,6 +23,8 @@ Here's the current deployment structure, with the Database ER diagram on the rig
 Both of these diagrams may change as the app grows in complexity.
 
 ## To Do:
+I'll put here some of the goals of how I will direct my focus in the coming days. For current status of the specific project management tasks, take a look at my app's public [Trello Board](https://trello.com/b/S0eno1QN/water-tracker-consumption-app).
+
 ### Devops:
   - Get a 1-node Docker Swarm going instead of using docker-compose
   - Configure the EC2 instance so that it always runs the app as a service
