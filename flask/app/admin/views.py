@@ -61,7 +61,7 @@ def edit_user(id):
     """
     user = User.query.get_or_404(id)
     # user form
-    form = UserForm(user)
+    form = UserForm(obj=user)
     if form.validate_on_submit():
         user.name = form.name.data
         user.last_name = form.last_name.data
@@ -142,7 +142,7 @@ def edit_plant(id):
     Edit a plant with the id
     """
     plant = Plant.query.get_or_404(id)
-    form = PlantForm(plant)
+    form = PlantForm(obj=plant)
     if form.validate_on_submit():
         plant.type = form.type.data
 
