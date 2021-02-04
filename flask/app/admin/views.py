@@ -1,6 +1,6 @@
 
 #flask/app/admin/views.py
-from flask import render_template, url_for
+from flask import render_template, url_for, flash, redirect
 from ..models import User, Plant
 from .forms import admin, PlantForm, UserForm
 
