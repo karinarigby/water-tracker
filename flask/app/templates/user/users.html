@@ -28,7 +28,7 @@
                         <td> 
                             <a href="{{ url_for('admin.view_user', id=user.id) }}">{{ user.name }} {{ user.last_name }}</a>
                         </td>
-                        <td></td>
+                        <td>{{ user.email }}</td>
                         <td>
                             <a href="{{ url_for('admin.edit_user', id=user.id) }}">
                                 <i class="fa fa-pencil"></i>
