@@ -69,7 +69,7 @@ def delete_user(id):
     db.session.delete(user)
     db.session.commit()
 
-    flash("You have successfully deleted user {}".format(user_name))
+    flash("You have successfully deleted user {} from the database".format(user_name))
     redirect(url_for("admin.view_users"))
 
 # Plants
