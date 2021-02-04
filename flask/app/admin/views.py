@@ -38,13 +38,19 @@ def add_user():
             email=email,
             # some permissions
         )
-        # try
-        db.session.add(user)
-        db.session.commit(user)
-        flash("You have successfully added user {} to the database".format(user.name))
-        
-        return redirect(url_for("admin._user", id=user.id))
-    return render_template("user/user.html", title="Add New User")
+        try:
+            db.session.add(user)
+            db.session.commit(user)
+            flash("You have successfully added user {} to the database".format(user.name))
+        except:
+            flash("Some error occurred while attempting to add the user to the datbase, please try again.")
+            return redirect(url_for("admin.add_user"))
+        return redirect(url_for("admin.view_users"))
+    return render_template("user/user.html", 
+        title="Add New User", 
+        form=form, 
+        add_user=True
+    )
 
 @admin.route("/users/edit/<int:id>", methods=["GET", "POST"])
 def edit_user(id):
