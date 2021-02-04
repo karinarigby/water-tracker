@@ -2,7 +2,7 @@
 #flask/app/admin/views.py
 from flask import render_template, url_for
 from ..models import User, Plant
-from . import admin
+from .forms import admin, PlantForm, UserForm
 
 # Users
 
