@@ -1,6 +1,7 @@
 
 #flask/app/admin/views.py
 from flask import render_template, url_for, flash, redirect
+from .. import db
 from ..models import User, Plant
 from . import admin
 from .forms import PlantForm, UserForm
@@ -39,13 +40,13 @@ def add_user():
             email=email,
             # some permissions
         )
-        try:
-            db.session.add(user)
-            db.session.commit(user)
-            flash("You have successfully added user {} to the database".format(user.name))
-        except:
-            flash("Some error occurred while attempting to add the user to the datbase, please try again.")
-            return redirect(url_for("admin.add_user"))
+        # try:
+        db.session.add(user)
+        db.session.commit()
+        flash("You have successfully added user {} to the database".format(user.name))
+        # except:
+        #     flash("Some error occurred while attempting to add the user to the datbase, please try again.")
+        #     return redirect(url_for("admin.add_user"))
         return redirect(url_for("admin.view_users"))
     return render_template("user/user.html", 
         title="Add New User", 
@@ -121,14 +122,14 @@ def add_plant():
         plant = Plant(
             type=form.type.data,
         )
-        try:
-            db.session.add(plant)
-            db.session.commit()
-            flash("You have successfully added another type of plant to the database!")
-            return redirect(url_for("admin.view_plants"))
-        except:
-            flash("Some error occurred while trying to add the plant to the database. Please try again.")
-            return redirect(url_for("admin.add_plant"))
+        # try:
+        db.session.add(plant)
+        db.session.commit()
+        flash("You have successfully added another type of plant to the database!")
+        return redirect(url_for("admin.view_plants"))
+        # except:
+            # flash("Some error occurred while trying to add the plant to the database. Please try again.")
+            # return redirect(url_for("admin.add_plant"))
     return render_template("plant/plant.html", 
         title="Add a New Plant", 
         form=form, 
