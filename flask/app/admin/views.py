@@ -112,6 +112,14 @@ def view_plants():
         title="Plants"
     )
 
+@admin.route("/plants/<int:id>", methods=["GET", "POST"])
+def view_plant(id):
+    """
+    View plant with given id
+    """
+    plant = Plant.query.get_or_404(id)
+    raise NotImplementedErrorç
+
 @admin.route("/plants/add", methods=["GET", "POST"])
 def add_plant():
     """
