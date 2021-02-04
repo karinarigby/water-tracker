@@ -54,9 +54,28 @@ def edit_user(id):
     user = User.query.get_or_404(id)
     # user form
     form = UserForm(user)
+    if form.validate_on_submit():
+        user.name = form.name.data
+        user.last_name = form.last_name.data
+        user.email = form.email.data
 
-
-    return render_template("plant/plant.html", plant=plant, title="Edit User {}".format(user.name))
+        try:
+            db.session.add(user)
+            db.session.commit()
+            flash('You have successfully edited {}'.format(user.name))
+            return redirect(url_for('admin.view_users'))
+        except:
+            flash("Some error occurred while applying changes to user in the database, please try again")
+            return redirect(url_for("admin.edit_user", id=id))
+    form.name.data = user.name
+    form.last_name.data = user.last_name
+    form.email.data = user.email
+    return render_template("user/user.html", 
+        plant=plant, 
+        title="Edit User {}".format(user.name), 
+        form=form, 
+        add_user=False,
+    )
 
 @admin.route("/users/delete/<int:id>", methods=["GET", "POST"])
 def delete_user(id):
