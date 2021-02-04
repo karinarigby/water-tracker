@@ -6,6 +6,12 @@ Every day the user gets a new seed. As they log their water intake throughout th
 
 Garden needs the ongoing watering by daily logging, otherwise they'll whither away one by one until you have to start over.
 
+There's two parts to the app: 
+ - The administrative side, where the admin can manage users, different kinds of plants, and the activities.
+ - The actual tracking logic itself, where the user can login, log water intake, set goals, view their garden and progress, challenge friends, etc.
+ 
+ I am focusing on the administrative stuff first, and then will shift my focus to the actual tracking afterwards.
+
 ##  Demo
 
 Take a look [here](http://ec2-3-96-179-242.ca-central-1.compute.amazonaws.com) for a running demo.
