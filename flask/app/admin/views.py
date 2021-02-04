@@ -79,7 +79,6 @@ def edit_user(id):
     form.last_name.data = user.last_name
     form.email.data = user.email
     return render_template("user/user.html", 
-        plant=plant, 
         title="Edit User {}".format(user.name), 
         form=form, 
         add_user=False,
@@ -97,7 +96,7 @@ def delete_user(id):
     db.session.commit()
 
     flash("You have successfully deleted user {} from the database".format(user_name))
-    redirect(url_for("admin.view_users"))
+    return redirect(url_for("admin.view_users"))
 
 # Plants
 
@@ -160,7 +159,7 @@ def edit_plant(id):
         return redirect(url_for("admin.view_plants"))
     form.type = plant.type
     return render_template("plant/plant.html", 
-        title="Edit Plant {}".format(plant.type.data),
+        title="Edit Plant {}".format(plant.type),
         form=form,
         add_plant=False,
     )
