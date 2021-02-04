@@ -80,7 +80,10 @@ def view_plants():
     List all types of plants
     """
     plants = Plant.query.all()
-    return render_template("plant/plants.html", plants=plants, title="Plants")
+    return render_template("plant/plants.html", 
+        plants=plants, 
+        title="Plants"
+    )
 
 @admin.route("/plants/add", methods=["GET", "POST"])
 def add_plant():
