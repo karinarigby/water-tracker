@@ -95,7 +95,20 @@ def edit_plant(id):
     Edit a plant with the id
     """
     plant = Plant.query.get_or_404(id)
-    return render_template("plant/plant.html", title="Edit Plant {}".format(plant.type.data))
+    form = PlantForm(plant)
+    if form.validate_on_submit():
+        plant.type = form.type.data
+
+        db.session.add(plant)
+        db.session.commit()
+        flash("You have successfully added the new plant to the database.")
+        return redirect(url_for("admin.view_plants"))
+    form.type = plant.type
+    return render_template("plant/plant.html", 
+        title="Edit Plant {}".format(plant.type.data),
+        form=form,
+        add_plant=False,
+    )
 
 @admin.route("/plants/delete/<int:id>", methods=["GET", "POST"])
 def delete_plant(id):
