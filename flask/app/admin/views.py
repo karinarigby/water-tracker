@@ -87,7 +87,24 @@ def add_plant():
     """
     Add a plant to the database
     """
-    return render_template("plant/plant.html", title="Add a New Plant")
+    form = PlantForm()
+    if form.validate_on_submit():
+        plant = Plant(
+            type=form.type.data,
+        )
+        try:
+            db.session.add(plant)
+            db.session.commit()
+            flash("You have successfully added another type of plant to the database!")
+            return redirect(url_for("admin.view_plants"))
+        except:
+            flash("Some error occurred while trying to add the plant to the database. Please try again.")
+            return redirect(url_for("admin.add_plant"))
+    return render_template("plant/plant.html", 
+        title="Add a New Plant", 
+        form=form, 
+        add_plant=True,
+    )
 
 @admin.route("/plants/edit/<int:id>", methods=["GET", "POST"])
 def edit_plant(id):
