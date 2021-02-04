@@ -4,14 +4,75 @@ from flask import render_template, url_for
 from ..models import User, Plant
 from . import admin
 
+# Users
+
 @admin.route("/users", methods=["GET", "POST"])
-def list_users():
+def view_users():
     """
     List all users
     """
     users = User.query.all()
-    return render_template("admin/users.html", users=users, title="Users")
+    return render_template("user/users.html", users=users, title="Users")
 
+@admin.route("/users/<int:id>", methods=["GET", "POST"])
+def view_user(id):
+    """
+    View a user's info
+    """
+    user = User.query.get_or_404(id)
+    raise NotImplementedError
+
+@admin.route("/users/add", methods=["GET", "POST"])
+def add_user():
+    """
+    Add a new user to the database
+    """
+    form = UserForm()
+    if form.validate_on_submit():
+        name = str.lower(form.name.data)
+        last_name = str.lower(form.last_name.data)
+        email = str.lower(form.email.data)
+        user = User(
+            name=name,
+            last_name=last_name,
+            email=email,
+            # some permissions
+        )
+        # try
+        db.session.add(user)
+        db.session.commit(user)
+        flash("You have successfully added user {} to the database".format(user.name))
+        
+        return redirect(url_for("admin._user", id=user.id))
+    return render_template("user/user.html", title="Add New User")
+
+@admin.route("/users/edit/<int:id>", methods=["GET", "POST"])
+def edit_user(id):
+    """
+    Edit a user with given id
+    """
+    user = User.query.get_or_404(id)
+    # user form
+    form = UserForm(user)
+
+
+    return render_template("plant/plant.html", plant=plant, title="Edit User {}".format(user.name))
+
+@admin.route("/users/delete/<int:id>", methods=["GET", "POST"])
+def delete_user(id):
+    """
+    Delete a user with given id
+    """
+    user = User.query.get_or_404(id)
+    user_name = user.name
+
+    db.session.delete(user)
+    db.session.commit()
+
+    flash("You have successfully deleted user {}".format(user_name))
+    redirect(url_for("admin.view_users"))
+
+# Plants
 
 @admin.route("/plants", methods=["GET", "POST"])
 def view_plants():
