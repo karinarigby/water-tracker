@@ -71,6 +71,14 @@ def get_user_day_progress_percentage(user_id, date):
     user_id: the id of the given
     request args - day: the date of which to check in the logs
     """
+    # get user goal for that day
+    user = User.query.get_or_404(user_id)
+
+    # get user progress for that day
+    log = Log.query.filter_by(user_id=user.id, date=date)
+
+    # calculate percentage and return it
+    return calculate_percentage(log.water_consumed,)
     raise NotImplementedError
 
 
@@ -78,6 +86,9 @@ def calculate_percentage(progress, goal):
     """
     Calculate the progress compared to today's goal
     """
+    return (progress/goal) * 100
+
+
 def set_user_water_daily_goal(user_id, amount):
     """
     Change the user's daily water goal for today's date moving forward
