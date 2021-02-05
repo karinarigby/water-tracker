@@ -91,8 +91,14 @@ def set_user_water_daily_goal(user_id, amount):
     # change the user.daily_goal_amount 
     # check if there's a log for that user
     # if the user's log has a daily goal amount, update it
-    raise NotImplementedError
-
+    user = User.query.get_or_404(user_id)
+    user.daily_goal_amount = amount
+    log = check_user_day_entry_exists(user_id, date.today)
+    if log:
+        log.water_goal = amount
+        db.session.add(log)
+        db.commit()
+    
 
 def add_friend(user_id, friend_id):
     """
