@@ -53,19 +53,25 @@ class User(db.Model):
     # db relationships
     plants = db.relationship("Plant", secondary=user_plant_assoc_table)
     
-    # @property
-    # def password(self):
-    #     """
-    #     Prevent password from being accessed
-    #     """
-    #     raise AttributeError("password is not a readable attribute")
+    @property
+    def password(self):
+        """
+        Prevent password from being accessed
+        """
+        raise AttributeError("password is not a readable attribute")
 
-    # @password.setter
-    # def password(self, password):
-    #     """
-    #     Set password to a hashed password
-    #     """
-    #     self.password_hash = generate_password_hash(password)
+    @password.setter
+    def password(self, password):
+        """
+        Set password to a hashed password
+        """
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        """
+        Check if hashed password matches actual password
+        """
+        return check_password_hash(self.password_hash, password)
 
     # def verify_password(self, password):
     #     """
