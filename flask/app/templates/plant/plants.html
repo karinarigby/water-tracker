@@ -25,7 +25,7 @@
               {% for plant in plants %}
                     <tr>
                         <td> 
-                            <a href="{{ url_for('admin.view_plant', id=plant.id) }}">{{ plant.type }}</a>
+                            <a href="{# { url_for('admin.view_plant', id=plant.id) } #}">{{ plant.type }}</a>
                         </td>
                         <td>
                             <a href="{{ url_for('admin.edit_plant', id=plant.id) }}">
