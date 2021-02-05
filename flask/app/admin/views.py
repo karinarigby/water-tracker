@@ -54,7 +54,7 @@ def add_user():
         add_user=True
     )
 
-@admin.route("/users/edit/<int:id>", methods=["GET", "POST"])
+@admin.route("/users/<int:id>/edit", methods=["GET", "POST"])
 def edit_user(id):
     """
     Edit a user with given id
@@ -84,7 +84,7 @@ def edit_user(id):
         add_user=False,
     )
 
-@admin.route("/users/delete/<int:id>", methods=["GET", "POST"])
+@admin.route("/users/<int:id>/delete", methods=["GET", "POST"])
 def delete_user(id):
     """
     Delete a user with given id
@@ -117,7 +117,7 @@ def view_plant(id):
     View plant with given id
     """
     plant = Plant.query.get_or_404(id)
-    raise NotImplementedErrorç
+    raise NotImplementedError
 
 @admin.route("/plants/add", methods=["GET", "POST"])
 def add_plant():
@@ -143,7 +143,7 @@ def add_plant():
         add_plant=True,
     )
 
-@admin.route("/plants/edit/<int:id>", methods=["GET", "POST"])
+@admin.route("/plants/<int:id>/edit", methods=["GET", "POST"])
 def edit_plant(id):
     """
     Edit a plant with the id
@@ -164,7 +164,7 @@ def edit_plant(id):
         add_plant=False,
     )
 
-@admin.route("/plants/delete/<int:id>", methods=["GET", "POST"])
+@admin.route("/plants/<int:id>/delete", methods=["GET", "POST"])
 def delete_plant(id):
     """
     Delete a plant with the id
