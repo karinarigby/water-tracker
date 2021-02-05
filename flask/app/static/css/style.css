@@ -34,7 +34,18 @@ p.copyright {
     border-color: #aec251;
 }
 
-.btn-default {
+.btn-primary {
+    color: #056F35 !important;
+    border-color: #056F35 !important;
+
+}
+
+.btn-primary:hover {
+    border-color: #033B1C;
+    color: #033B1C;
+}
+
+.btn-secondary {
     border-color: #aec251;
     color: #aec251;
 }
@@ -89,11 +100,6 @@ p.copyright {
 
 .intro-message > h3 {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-}
-
-.jumbotron {
-    background-color: #;
-  
 }
 
 .lead {
