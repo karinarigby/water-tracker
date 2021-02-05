@@ -35,13 +35,14 @@ def adjust_day_log_drink_total(user_id, amount, date):
     db.session.commit()
 
 
-def check_user_today_entry_exists(user_id):
+def check_user_day_entry_exists(user_id, date):
     """
     Check if there exists an entry for today for given user
     Return log if exists else none
     """
-    log = Log.query.filter_by(user_id=user_id, date=date.today()).first()
+    log = Log.query.filter_by(user_id=user_id, date=date).first()
     return log
+
 
 def add_user_day_entry(user_id, day):
     """
