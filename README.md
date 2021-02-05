@@ -1,3 +1,5 @@
+### Please note that the previous demo link that I shared of this project will not respond anymore, but I've allocated an [static IP](http://3.97.179.20) address to the Instance it's running on.
+
 #  Water Tracker Garden App
 
 This is a web app that helps bring the user closer to their water consumption goals.
@@ -14,7 +16,7 @@ There's two parts to the app:
 
 ##  Demo
 
-Take a look [here](http://ec2-3-96-179-242.ca-central-1.compute.amazonaws.com) for a running demo.
+Take a look [here](http://3.97.179.20) for a running demo. 
 
 ##  Tech Stack
 
@@ -36,9 +38,9 @@ I'll put here some of the goals of how I will direct my focus in the coming days
   - Configure the EC2 instance so that it always runs the app as a service
   
 ### Admin:
-  - Create error template pages
-  - Create "view users" and "view plants" templates
-  - Create edit/delete views for users, logs, and plants
+  - ~~Create error template pages~~
+  - ~~Create "view users" and "view plants" templates~~
+  - ~~Create edit/delete views for users,~~ logs, and ~~plants~~
   
 ### Auth:
   - Enable user and admin login
