@@ -64,23 +64,18 @@ def get_user_total_drank_today(user_id):
     return log.water_consumed if log else None
 
 
-
 def get_user_day_progress_percentage(user_id, date):
     """
     Calculate the user's progress for the given day
     user_id: the id of the given
-    request args - day: the date of which to check in the logs
+    return: percentage of progress
     """
     # get user goal for that day
-    user = User.query.get_or_404(user_id)
 
-    # get user progress for that day
-    log = Log.query.filter_by(user_id=user.id, date=date)
+    # see if log exists for user and date
+    log = Log.query.filter_by(user_id=user_id, date=date).first()
 
-    # calculate percentage and return it
-    return calculate_percentage(log.water_consumed,)
-    raise NotImplementedError
-
+    return calculate_percentage(log.water_consumed, log.water_goal) if log else 0
 
 def calculate_percentage(progress, goal):
     """
