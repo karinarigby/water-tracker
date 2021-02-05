@@ -20,7 +20,7 @@ def flask_app():
     yield test_client # testing happens here
 
     # After tests are done clean up. 
-    connecion.pop()
+    connection.pop()
 
 @pytest.fixture(scope="session")
 def tested_db(flask_app):
