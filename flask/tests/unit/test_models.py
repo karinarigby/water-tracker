@@ -1,9 +1,11 @@
 #flask/tests/unit/test_models.py
 
+from pytest import mark
 from app.models import User, Plant, Log
 
 class ModelTests:
 
+    @mark.log
     def test_new_user(self):
         """
         GIVEN a User model
@@ -23,6 +25,7 @@ class ModelTests:
     #     THEN ensure set user.password calls pas
     #     """
     #     raise NotImplementedError
+    @mark.log
     def test_new_log(self):
         """
         GIVEN a Log model
@@ -37,6 +40,7 @@ class ModelTests:
         assert log.water_goal == 5000
         assert log.water_consumed == 1
 
+    @mark.plant
     def test_new_plant(self):
         """
         GIVEN a Plant model
