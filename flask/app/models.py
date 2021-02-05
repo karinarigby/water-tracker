@@ -30,7 +30,7 @@ class Plant(db.Model):
     type = db.Column(db.String(50))
 
     def __repr__(self):
-        return "<Plant: {}>".format(self.name)
+        return "<Plant: {}>".format(self.type)
 
 # class User(UserMixin, db.Model):
 class User(db.Model):
