@@ -6,6 +6,12 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from app import db, ma
 
+
+class Access(IntEnum):
+    USER = 1
+    ADMIN = 2
+
+
 user_plant_assoc_table = db.Table(
     "user_plant_assoc",
     db.Column("user_id", db.Integer, db.ForeignKey("users.id", ondelete="CASCADE")),
