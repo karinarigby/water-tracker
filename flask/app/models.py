@@ -52,7 +52,7 @@ class User(db.Model):
 
     # this will inform what to set the goal 
     daily_goal_amount = db.Column(db.Integer)
-    access = db.Column(db.Enum(Access), default=Access.USER)
+    access = db.Column(db.Enum(Access), default=Access.USER, nullable=False)
     # db relationships
     plants = db.relationship("Plant", secondary=user_plant_assoc_table)
     logs = db.relationship("Log", backref="user")
