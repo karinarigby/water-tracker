@@ -42,6 +42,18 @@ def add_user_day_entry(user_id, day):
     Add a new user day log entry into the database
     Returns the log
     """
+    user = User.query.get_or_404(user_id)
+    log = Log(
+        user_id=user_id,
+        water_goal=user.daily_goal_amount,
+        water_consumed=0,
+        date=date.today()
+    )
+    db.session.add(log)
+    db.session.commit()
+    return log.id
+
+
 def get_user_total_drank_today(user_id):
     """
     Calculate today's progress for given user
