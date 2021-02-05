@@ -20,13 +20,19 @@ Grow into different stages of plant as goals progress
 Whither from user's garden if not 'watered' frequently enough
 Evolve into each stage of 'dying'
 """
-def adjust_day_log_drink_total(user_id, amount, day):
+def adjust_day_log_drink_total(user_id, amount, date):
     """
     Add or subtract water amount in millilitres to user on given day
     """
     # check if user day log exists. create if not exist
     # make the change and update in the db
-    raise NotImplementedError
+    log = check_user_day_entry_exists(user_id, date)
+    if log is None:
+        log = add_user_day_entry(user_id, date)
+    
+    log.water_consumed = log.water_consumed + amount
+    db.session.add(log)
+    db.session.commit()
 
 
 def check_user_today_entry_exists(user_id):
