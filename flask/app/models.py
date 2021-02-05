@@ -117,7 +117,7 @@ class Log(db.Model):
     date = db.Column(db.DateTime)
 
     #relationships
-    user = db.relationship("User", backref="logs")
+    # user = db.relationship("User", backref="logs")
 
     def __repr__(self):
         return "<Log: {} {} {} >".format(self.user.name, self.water_consumed, self.date)
