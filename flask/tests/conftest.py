@@ -35,3 +35,35 @@ def tested_db(flask_app):
         yield db # all the fun stuff happens here
         db.session.remove()
         db.drop_all()
+
+@pytest.fixture(scope="function")
+def user():
+    # create a test user
+    return User(
+        name="test_name",
+        last_name="test_last_name",
+        email="testemail",
+        password="testpassword",
+    )
+
+@pytest.fixture(scope="function")
+def plant():
+    return Plant(
+        type="testtype",
+    )
+
+@pytest.fixture(scope="function")
+def make_db_test_user(tested_db):
+    def _make_db_test_user(**user_kwargs):
+        test_user = User(**user_kwargs)
+        db.session.add(test_user)
+        return test_user
+    return _make_db_test_user
+
+@pytest.fixture(scope="function")
+def make_db_test_plant(tested_db):
+    def _make_test_plant(**plant_kwargs):
+        test_plant = Plant(**plant_kwargs)
+        db.session.add(test_plant)
+        return test_plant
+    return _make_test_plant
