@@ -1,19 +1,6 @@
 from datetime import date
 from . import Log, User
 """
-User Key Actions:
-
-Add a new water log entry
-View today's water consumption goal progress
-View week/month's progress and activity 
-Set a daily goal *
-Edit a daily goal *
-View plants 
-Add friend
-Challenge friend
-Plant Key Actions:
-
-- 
 
 Add plant to user's garden upon user's daily goal completed
 Grow into different stages of plant as goals progress
@@ -58,7 +45,7 @@ def add_user_day_entry(user_id, day):
     )
     db.session.add(log)
     db.session.commit()
-    return log.id
+    return log
 
 
 def get_user_total_drank_today(user_id):
@@ -83,6 +70,7 @@ def get_user_day_progress_percentage(user_id, date):
     log = Log.query.filter_by(user_id=user_id, date=date).first()
 
     return calculate_percentage(log.water_consumed, log.water_goal) if log else 0
+
 
 def calculate_percentage(progress, goal):
     """
