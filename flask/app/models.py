@@ -50,6 +50,7 @@ class User(db.Model):
     token = db.Column(db.String(32), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
 
+    access = db.Column(db.Enum(Access.USER), default=Access.USER)
     # db relationships
     plants = db.relationship("Plant", secondary=user_plant_assoc_table)
     
@@ -73,11 +74,8 @@ class User(db.Model):
         """
         return check_password_hash(self.password_hash, password)
 
-    # def verify_password(self, password):
-    #     """
-    #     Check if hashed password matches actual password
-    #     """
-    #     return check_password_hash(self.password_hash, password)
+    def is_admin(self):
+        return self.access == Access.ADMIN
 
     def get_token(self, expires_in=3600):
         now = datetime.utcnow()
