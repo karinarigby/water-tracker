@@ -58,6 +58,13 @@ def get_user_total_drank_today(user_id):
     """
     Calculate today's progress for given user
     """
+    # check if log for today and user_id
+    log = check_user_today_entry_exists(user_id)
+  
+    return log.water_consumed if log else None
+
+
+
 def get_user_day_progress_percentage(user_id, date):
     """
     Calculate the user's progress for the given day
