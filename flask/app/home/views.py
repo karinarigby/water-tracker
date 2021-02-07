@@ -11,6 +11,16 @@ def homepage():
     """
     return render_template("home/index.html", title="Home")
 
+@home.route("/dashboard")
+def dashboard():
+    """
+    Render the dashboard on the /dashboard route
+    """
+    # if
+
+
+    return render_template("home/dashboard.html", title="Dashboard")
+
 @home.route("/howitworks")
 def how_it_works(methods=("GET")):
     """
