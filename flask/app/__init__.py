@@ -52,7 +52,7 @@ def create_app(config_name):
 
     @app.errorhandler(500)
     def internal_server_error(error):
-        db.session.rollback()
+      
         # if wants_json_response():
             #return api_error_response(500)
         return render_template('errors/500.html', title='Internal Server Error')
