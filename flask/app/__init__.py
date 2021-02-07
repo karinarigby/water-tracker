@@ -10,6 +10,7 @@ from config import app_config
 
 db = SQLAlchemy()
 ma = Marshmallow()
+login_manager = LoginManager()
 
 def create_app(config_name):
     # the "instance_relative_config=True" setting tells the app that config files are relative to the instance folder
@@ -21,6 +22,12 @@ def create_app(config_name):
     Bootstrap(app)
     db.init_app(app)
     ma.init_app(app)
+
+    login_manager.init_app(app)
+    login_manager.login_message = "You must be logged in to see this page. "
+    login_manager.login_view = "auth.login"
+
+
     migrate = Migrate(app, db)
 
     from app import models
