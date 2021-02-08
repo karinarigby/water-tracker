@@ -1,5 +1,3 @@
-### Please note that the previous demo link that I shared of this project will not respond anymore, but I've allocated a [static IP](http://3.97.179.20) address to the Instance it's running on.
-
 #  Water Tracker Garden App
 ![](/docs/title-pic.png)
 
