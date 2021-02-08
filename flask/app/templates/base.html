@@ -24,8 +24,8 @@
           <div class="collapse navbar-collapse" id="navbar-collapse-1">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0"">
                 <li class="nav-item"><a class="nav-link" href="{{ url_for('home.how_it_works')  }}">How It Works</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('home.homepage') }}">User Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">User Progress</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('home.dashboard') }}">User Dashboard</a></li>
+         
 
                 <li class="nav-item dropdown">
                   <a id="manage" class="dropdown-toggle nav-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,9 +38,13 @@
                 </li>
                     <!-- <li><a href="#">Logout</a></li>-->
                 <li class="nav-item"><a class="nav-link" href="{{ url_for('home.homepage') }}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Sign Up</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-                  {# {% endif %} #}
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.register')}}">Sign Up</a></li>
+                
+                {% if current_user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout')}}">Logout</a></li>
+                {% else %}
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login')}}">Login</a></li>
+                {% endif %}
               </ul>
           </div>
         </div>
