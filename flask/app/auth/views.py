@@ -1,9 +1,12 @@
-from flask import render_template, url_for
+from flask import render_template, url_for, flash
 from flask_login import logout_user, login_user
-from ..models import User, Access
-from . import auth, RegistrationForm, LoginForm
 
-@auth.route('/register', methods=("GET", "POST"))
+from .. import db
+from ..models import User, Access
+from . import auth
+from .forms import RegistrationForm, LoginForm
+
+@auth.route('/register', methods=["GET", "POST"])
 def register():
     """
     Register a new user into the db
@@ -23,21 +26,22 @@ def register():
         flash("Hey, you successfully registered! You may now login. ")
         return redirect(url_for("auth.login"))
 
-    render_template("auth/register.html", form=form, title="Sign Up")
+    return render_template("auth/register.html", form=form, title="Sign Up")
 
 
-@auth.route('/login', methods=("GET", "POST"))
+@auth.route('/login', methods=["GET", "POST"])
 def login():
     """
     Allow a user to login using credentials
     """
     form = LoginForm()
-
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        if user is not None and user.verify_password:
+        if user is not None and user.verify_password(form.password.data):
             login_user()
             return redirect(url_for("home.dashboard"))
+        else:
+            flash("You goofed on the email or password")
 
     return render_template("auth/login.html", form=form, title="Login")
 
