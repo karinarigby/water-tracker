@@ -1,6 +1,6 @@
 # webapp/flask/app/auth/forms.py
 
-from flask_wtf import FlaskForm,
+from flask_wtf import FlaskForm
 
 from wtforms import StringField, PasswordField, ValidationError, SubmitField
 
@@ -22,7 +22,7 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField("Submit")
 
     def validate_email(self, field):
-        if User.query.filter_by(email.field.data).first():
+        if User.query.filter_by(email=field.data).first():
             raise ValidationError("Email is already in use")
 
 
