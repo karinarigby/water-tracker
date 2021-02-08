@@ -3,8 +3,6 @@ from flask_login import logout_user, login_user
 from ..models import User, Access
 from . import auth, RegistrationForm, LoginForm
 
-from . import auth
-
 @auth.route('/register', methods=("GET", "POST"))
 def register():
     """
@@ -33,5 +31,23 @@ def login():
     """
     Allow a user to login using credentials
     """
-    return render_template()
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user is not None and user.verify_password:
+            login_user()
+            return redirect(url_for("home.dashboard"))
+
+    return render_template("auth/login.html", form=form, title="Login")
+
+
+@auth.route('/logout')
+def logout():
+    """
+    Sign out an authenticated user
+    """
+    logout_user()
+    flash("You have successfully been logged out")
+    return redirect(url_for("home.homepage"))
 
