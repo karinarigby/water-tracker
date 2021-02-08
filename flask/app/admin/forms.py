@@ -6,7 +6,6 @@ from wtforms import StringField, SubmitField
 
 from wtforms.validators import DataRequired, Email
 
-from ..models import User, Plant
 
 class UserForm(FlaskForm):
     """
