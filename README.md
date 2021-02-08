@@ -1,6 +1,7 @@
 ### Please note that the previous demo link that I shared of this project will not respond anymore, but I've allocated a [static IP](http://3.97.179.20) address to the Instance it's running on.
 
 #  Water Tracker Garden App
+![](/docs/title-pic.png)
 
 This is a web app that helps bring the user closer to their water consumption goals.
 
@@ -31,48 +32,21 @@ Here's the current deployment structure, with the Database ER diagram on the rig
 Both of these diagrams may change as the app grows in complexity.
 
 ## To Do:
-I'll put here some of the goals of how I will direct my focus in the coming days. For current status of the specific project management tasks, take a look at my app's public [Trello Board](https://trello.com/b/S0eno1QN/water-tracker-consumption-app).
+For current status of the specific project management tasks, take a look at my app's public [Trello Board](https://trello.com/b/S0eno1QN/water-tracker-consumption-app).
 
-### Devops:
-  - Get a 1-node Docker Swarm going instead of using docker-compose
-  - Configure the EC2 instance so that it always runs the app as a service
-  
-### Admin:
-  - ~~Create error template pages~~
-  - ~~Create "view users" and "view plants" templates~~
-  - ~~Create edit/delete views for users,~~ logs, and ~~plants~~
-  
-### Auth:
-  - Enable user and admin login
-  - Enable OAuth (stretch)
-
-### User Key Actions:
-  - Add a new water log entry
-  - View today's water consumption goal progress
-  - View week/month's progress and activity
-  - Set a daily goal
-  - Edit a daily goal
-  - View plants
-  - Add friend
-  - Challenge friend
-  
-### Plant Key Actions:
-  - Add plant to user's garden upon user's daily goal completed
-  - Grow into different stages of plant as goals progress
-  - Whither from user's garden if not 'watered' frequently enough
-    - Evolve into each stage of 'dying'
 
 ## What's Missing:
-  - CI/CD config setup (like CircleCI)
+  - CI/CD config setup
   - AWS S3 content delivery for the static files
   - Taking advantage of AWS's ECS and ECR for Docker images
   - DNS config with AWS Route 53
   - Fun plant animations and evolutions
   - AJAX calls to update the pages without refreshing
-  - Functional tests (Like with Selenium)
+  - Functional tests (i.e., Selenium)
 
 ##  Credits and License
-I don't really know how to do the specific license attributions correctly, but I followed along with the tutorial series by Mbithe Nzomo to get the initial structure of the Flask part of the project. Then I expanded upon it by adapting the view functions according to my needs, adding Pytest test package, Docker settings, etc. 
+
+Note: I followed along with the tutorial series by Mbithe Nzomo to get the initial structure of the Flask part of the project. Then I expanded upon it by adapting the view functions according to my needs, adding Pytest test package, Docker settings, etc. 
 
 Mbithe's project can be found [here](https://github.com/mbithenzomo/project-dream-team-three).
 
