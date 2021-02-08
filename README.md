@@ -1,5 +1,5 @@
-#  Water Tracker Garden App
 ![](/docs/title-pic.png)
+#  Water Tracker Garden App
 
 This is a web app that helps bring the user closer to their water consumption goals.
 
