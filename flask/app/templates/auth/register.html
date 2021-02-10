@@ -6,13 +6,18 @@
 {% block title %}Register{% endblock %}
 {% block body %}
 <div class="content-section">
-  <br/>
-  {{ utils.flashed_messages() }}
-  <br/>
-  <div class="center">
-    <h1>Sign Up</h1>
-    <br/>
-    {{ wtf.quick_form(form) }}
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+      <br/>
+      {{ utils.flashed_messages() }}
+      <br/>
+      <div class="center">
+        <h1>Sign Up</h1>
+        <br/>
+        {{ wtf.quick_form(form) }}
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
