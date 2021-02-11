@@ -16,32 +16,63 @@ from user.utilities import (
 @mark.log
 class UtilityUnitTests:
 
-
-    def test_adjust_day_log_drink_total(self, mocker):
+    @mark.parametrize(
+        "water_consumed, new_amount, expected_result",
+        [
+            (0, 200, 200),
+            (100, 150, 250),
+            (300, -200, 100),
+            (0, -150, 0),
+            (100, 0, 100),
+        ]
+    )
+    def test_adjust_day_log_drink_total_given_existing_log(self, water_consumed, new_amount, expected_result, mocker):
         """
-        GIVEN a user id, integer amount, and day
+        GIVEN a user id, integer amount, existing log, and day
         WHEN the amount is adjusted for the given day
         THEN ensure that a log exists with correct sum upon return
         """
         
         # set up dependencies
+   
+        user = User(id=0, daily_goal_amount=4000)
+        mock_today = mocker.patch("app.user.utilities.date.today")
+        mock_db = mocker.patch("app.user.utilities.db")
+        mock_log = mocker.patch("app.user.utilities.Log")
+        mock_log.water_consumed = water_consumed
+
+        mock_check_log_exist = mocker.patch("app.user.utilities.check_user_day_entry_exists",
+            return_value=mock_log)
+        
+        # call the functoin with the amount
+        adjust_day_log_drink_total(user.id, new_amount, mock_today)
+        
+        # assert that check_user_today_entry_exists called
+        mock_check_log_exist.assert_called_with(user.id, mock_today)
+        
+        # assert that create is called if not exist
+        mock_db.session.add.assert_called_with(mock_log)
+        mock_db.session.commit.assert_called_once()
+        assert mock_log.water_consumed == expected_result
+
+
+    def test_adjust_day_log_drink_total_given_nonexisting_log(self, mocker):
+        """
+        GIVEN a user id, integer amount, non existing log, and day
+        WHEN the amount is adjusted for the given day
+        THEN ensure that a log is created and returns correct sum
+        """
+        # set up dependencies
         user = User(id=0, daily_goal_amount=4000)
         today = mocker.patch("app.user.utilities.date.today")
         mock_check_log_exist = mocker.patch("app.user.utilities.check_user_day_entry_exists",
-            return_value=True)
-        
-        # call the functoin with the amount
+            return_value=None)
+
+        # call the stuff
         adjust_day_log_drink_total(user.id, 200, today)
-        
-        # assert that check_user_today_entry_exists called
-        mock_check_log_exist.assert_called_with(user.id, today)
-        
-        # assert that create is called if not exist
 
-        #     assert that db add and commit is called 
-        # assert that new sum correctly applies addition/subtraction (min 0)
+        # assert
 
-        raise NotImplementedError
 
 
     def test_check_user_today_entry_exists(self):
