@@ -1,5 +1,7 @@
 from datetime import date
 from . import Log, User
+
+
 """
 
 Add plant to user's garden upon user's daily goal completed
@@ -17,7 +19,9 @@ def adjust_day_log_drink_total(user_id, amount, date):
     if log is None:
         log = add_user_day_entry(user_id, date)
     
-    log.water_consumed = log.water_consumed + amount
+    sum = log.water_consumed + amount
+    log.water_consumed = sum if sum > 0 else 0
+
     db.session.add(log)
     db.session.commit()
 
@@ -99,4 +103,6 @@ def add_friend(user_id, friend_id):
     """
     Add a new friend to the user's profile
     """
+    user = User.query.get_or_404(user_id)
+
     raise NotImplementedError
