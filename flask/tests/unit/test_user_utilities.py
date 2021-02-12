@@ -2,7 +2,7 @@
 from unittest.mock import Mock
 
 from app.models import User, Plant, Log
-from user.utilities import (
+from app.user.utilities import (
     adjust_day_log_drink_total,
     check_user_today_entry_exists,
     add_user_day_entry,
@@ -38,7 +38,7 @@ class UtilityUnitTests:
         user = User(id=0, daily_goal_amount=4000)
         mock_today = mocker.patch("app.user.utilities.date.today")
         mock_db = mocker.patch("app.user.utilities.db")
-        mock_log = mocker.patch("app.user.utilities.Log")
+        mock_log = mocker.patch("app.user.utilities.log")
         mock_log.water_consumed = water_consumed
 
         mock_check_log_exist = mocker.patch("app.user.utilities.check_user_day_entry_exists",
@@ -56,7 +56,17 @@ class UtilityUnitTests:
         assert mock_log.water_consumed == expected_result
 
 
-    def test_adjust_day_log_drink_total_given_nonexisting_log(self, mocker):
+    @mark.parametrize(
+        "water_consumed, new_amount, expected_result",
+        [
+            (0, 200, 200),
+            (100, 150, 250),
+            (300, -200, 100),
+            (0, -150, 0),
+            (100, 0, 100),
+        ]
+    )
+    def test_adjust_day_log_drink_total_given_nonexisting_log(self, water_consumed, new_amount, expected_result, mocker):
         """
         GIVEN a user id, integer amount, non existing log, and day
         WHEN the amount is adjusted for the given day
