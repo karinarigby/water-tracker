@@ -1,6 +1,6 @@
 from datetime import date
 from . import Log, User
-
+from app import db
 
 """
 
@@ -9,6 +9,8 @@ Grow into different stages of plant as goals progress
 Whither from user's garden if not 'watered' frequently enough
 Evolve into each stage of 'dying'
 """
+
+
 def adjust_day_log_drink_total(user_id, amount, date):
     """
     Add or subtract water amount in millilitres to user on given day
@@ -18,7 +20,7 @@ def adjust_day_log_drink_total(user_id, amount, date):
     log = check_user_day_entry_exists(user_id, date)
     if log is None:
         log = add_user_day_entry(user_id, date)
-    
+
     sum = log.water_consumed + amount
     log.water_consumed = sum if sum > 0 else 0
 
@@ -57,8 +59,7 @@ def get_user_total_drank_today(user_id):
     Calculate today's progress for given user
     """
     # check if log for today and user_id
-    log = check_user_today_entry_exists(user_id)
-  
+    log = check_user_day_entry_exists(user_id, date.today)
     return log.water_consumed if log else None
 
 
@@ -87,7 +88,7 @@ def set_user_water_daily_goal(user_id, amount):
     """
     Change the user's daily water goal for today's date moving forward
     """
-    # change the user.daily_goal_amount 
+    # change the user.daily_goal_amount
     # check if there's a log for that user
     # if the user's log has a daily goal amount, update it
     user = User.query.get_or_404(user_id)
@@ -97,7 +98,7 @@ def set_user_water_daily_goal(user_id, amount):
         log.water_goal = amount
         db.session.add(log)
         db.commit()
-    
+
 
 def add_friend(user_id, friend_id):
     """
