@@ -1,10 +1,11 @@
-from flask import render_template, url_for, flash
+from flask import render_template, url_for, flash, redirect
 from flask_login import logout_user, login_user
 
 from .. import db
 from ..models import User, Access
 from . import auth
 from .forms import RegistrationForm, LoginForm
+
 
 @auth.route('/register', methods=["GET", "POST"])
 def register():
@@ -42,6 +43,7 @@ def login():
             return redirect(url_for("home.dashboard"))
         else:
             flash("You goofed on the email or password")
+            return redirect(url_for("auth.login"))
 
     return render_template("auth/login.html", form=form, title="Login")
 
