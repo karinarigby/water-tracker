@@ -19,7 +19,7 @@
        <div class="middle">
          <div class="inner">
              {% if current_user.is_authenticated %}
-             <h1>Hey {{ current_user.name }}, make a splash!</h1>
+             <h1 style="text-align: center;">Hey {{ current_user.name }}, make a splash!</h1>
              {% else %}
              <h1 style="text-align: center;"> Hey friend, make a splash today</h1>
              <p style="text-align: center;"> Sign in to keep track of your progress and grow your plant collection.</p>
@@ -28,21 +28,15 @@
             <hr class="intro-divider">
             <div class="row">
                 <!-- Progress column-->
-                <div class="col-md-6">
-                    <div class="container">
-                        <!-- Today's seed/plant evolution area -->
-
-                    </div>
+                <div class="col-md-12">
                     <!-- Today's progress bar-->
-                    <div class="progress" style="height: .5rem;">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                </div>
-                <!-- Log column-->
-                <div clas="col -md-6">
-                    <div>
+                    <div class="container">
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                    </div>
+                      <div>
                         <button type="button" class="btn btn-primary btn-sm"> - </button>
-                        
                         <button type="button" class="btn btn-primary btn-sm"> + </button>
                         <!-- the  - _______ + area -->
                     </div>
@@ -54,6 +48,7 @@
                         <button type="button" class="btn btn-secondary">L</button>
                     </div>
                 </div>
+               
             </div>
             <div>
                 <!-- THe plant area for displaying plants-->
