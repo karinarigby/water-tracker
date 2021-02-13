@@ -6,6 +6,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from enum import Enum, IntEnum
 from app import db, ma, login_manager
 
+
 # Set up user_loader (this enables flask-login to work)
 @login_manager.user_loader
 def load_user(user_id):
@@ -37,8 +38,7 @@ class Plant(db.Model):
     def __repr__(self):
         return "<Plant: {}>".format(self.type)
 
-# class User(UserMixin, db.Model):
-class User(db.Model):
+class User(UserMixin, db.Model):
     """
     Create a table of users
     """
