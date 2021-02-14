@@ -17,17 +17,23 @@ services:
       - frontend
     ports:
       - "80:80"
+    # deploy:
 
   flask:
     build: ./flask
     image: flask
     container_name: flask
+    # secrets:
+    #   - sqlalchemy_uri
     environment: 
       FLASK_ENV: "development"
+      # SQLALCHEMY_DATABASE_URI: /run/secrets/sqlalchemy_uri.txt
     networks: 
       - frontend
     volumes:
       - ./flask:/var/www/flask
+    
+    # deploy:
 
 volumes:
   appdata:
@@ -38,3 +44,7 @@ volumes:
 networks:
   frontend:
     driver: bridge
+
+# secrets:
+#   sqlalchemy_uri: 
+#     file: ./sqlalchemy_uri.txt
