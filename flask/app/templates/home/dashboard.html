@@ -28,24 +28,23 @@
             <hr class="intro-divider">
             <div class="row">
                 <!-- Progress column-->
-                <div class="col-md-12">
+                <div class="container">
                     <!-- Today's progress bar-->
+                    {% if current_user.is_authenticated and log.water_consumed > 0 %}
+                    {% endif %}
+                    <img src="{{ url_for('static', filename='img/plants_png/2.png') }}" style="width:8rem;height:8rem;">
                     <div class="container">
                         <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                           </div>
                     </div>
-                      <div>
-                        <button type="button" class="btn btn-primary btn-sm"> - </button>
-                        <button type="button" class="btn btn-primary btn-sm"> + </button>
+                      <div id="watercontainer">
+                        <!-- <button type="button" class="btn btn-primary btn-sm"> - </button> -->
+                        <button type="button" class="btn btn-secondary btn-sm">
+                            <img src="{{ url_for('static', filename='img/plants_png/water.png') }}" style="width:5rem;height:5rem;">
+                        </button>
+                        <p style="text-align: center;">250 ml</p>   
                         <!-- the  - _______ + area -->
-                    </div>
-                    <div>
-                        <!-- the water container button areas-->
-                        <button type="button" class="btn btn-secondary">XS</button>
-                        <button type="button" class="btn btn-secondary">S</button>
-                        <button type="button" class="btn btn-secondary">M</button>
-                        <button type="button" class="btn btn-secondary">L</button>
                     </div>
                 </div>
                
