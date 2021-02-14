@@ -143,3 +143,7 @@ p.copyright {
     margin-left: auto;
     margin-right: auto;
 }
+
+#watercontainer{
+    padding: 2rem;
+    text-align: center;}
