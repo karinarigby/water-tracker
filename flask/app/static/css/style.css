@@ -75,6 +75,10 @@ p.copyright {
   height: 4em;
 }
 
+.inner {
+    padding-top: 2rem;
+}
+
 .intro-divider {
     width: 400px;
     border-top: 1px solid #f8f8f8;
