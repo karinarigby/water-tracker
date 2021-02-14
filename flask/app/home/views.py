@@ -1,7 +1,6 @@
 # flask/app/home/views.py
 
 from flask import render_template
-
 from . import home
 
 
@@ -18,9 +17,6 @@ def dashboard():
     """
     Render the dashboard on the /dashboard route
     """
-    # if
-
-
     return render_template("home/dashboard.html", title="Dashboard")
 
 
