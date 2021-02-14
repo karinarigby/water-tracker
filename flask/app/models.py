@@ -1,5 +1,7 @@
 #flask/app/models.py
-
+from datetime import datetime, timedelta
+import os
+from os import base64
 from flask_login import UserMixin
 from flask_marshmallow import fields
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -37,6 +39,7 @@ class Plant(db.Model):
 
     def __repr__(self):
         return "<Plant: {}>".format(self.type)
+
 
 class User(UserMixin, db.Model):
     """
@@ -121,8 +124,12 @@ class Log(db.Model):
     water_consumed = db.Column(db.Integer)
     date = db.Column(db.DateTime)
 
-    #relationships
+    # relationships
     # user = db.relationship("User", backref="logs")
 
     def __repr__(self):
-        return "<Log: {} {} {} >".format(self.user.name, self.water_consumed, self.date)
+        return "<Log: {} {} {} >".format(
+            self.user.name,
+            self.water_consumed,
+            self.date
+        )
