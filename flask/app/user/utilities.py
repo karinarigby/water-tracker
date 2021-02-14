@@ -1,5 +1,5 @@
 from datetime import date
-from . import Log, User
+from ..models import Log, User
 from app import db
 
 """
