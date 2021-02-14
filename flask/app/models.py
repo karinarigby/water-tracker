@@ -1,7 +1,7 @@
-#flask/app/models.py
+# flask/app/models.py
 from datetime import datetime, timedelta
 import os
-from os import base64
+
 from flask_login import UserMixin
 from flask_marshmallow import fields
 from werkzeug.security import check_password_hash, generate_password_hash
