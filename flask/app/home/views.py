@@ -1,8 +1,9 @@
-#flask/app/home/views.py
+# flask/app/home/views.py
 
 from flask import render_template
 
 from . import home
+
 
 @home.route("/")
 def homepage():
@@ -10,6 +11,7 @@ def homepage():
     Render the home page on the / route
     """
     return render_template("home/index.html", title="Home")
+
 
 @home.route("/dashboard")
 def dashboard():
@@ -20,6 +22,7 @@ def dashboard():
 
 
     return render_template("home/dashboard.html", title="Dashboard")
+
 
 @home.route("/howitworks")
 def how_it_works(methods=("GET")):
