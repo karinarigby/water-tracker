@@ -38,9 +38,9 @@
                             <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                           </div>
                     </div>
-                      <div id="watercontainer">
+                      <div id="water-container-s">
                         <!-- <button type="button" class="btn btn-primary btn-sm"> - </button> -->
-                        <button type="button" class="btn btn-secondary btn-sm">
+                        <button type="button" id="water-container-s" class="btn btn-secondary btn-sm">
                             <img src="{{ url_for('static', filename='img/plants_png/water.png') }}" style="width:5rem;height:5rem;">
                         </button>
                         <p style="text-align: center;">250 ml</p>   
@@ -57,8 +57,7 @@
         </div>
     </div>
 </div>
-
 {% block script %}
-<script src"{{ url_for('static', filename='js/main.js') }}></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}
 {% endblock %}
