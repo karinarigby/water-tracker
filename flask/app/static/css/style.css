@@ -71,8 +71,8 @@ p.copyright {
 }
 
 .footer, .push {
-  clear: both;
-  height: 4em;
+    clear: both;
+    height: 4em;
 }
 
 .inner {
@@ -144,6 +144,6 @@ p.copyright {
     margin-right: auto;
 }
 
-#watercontainer{
+#water-container-s{
     padding: 2rem;
     text-align: center;}
