@@ -13,7 +13,20 @@ $(document).ready(function(){
     }
 
     function adjustUserWaterAmount(amount){
+        var url = ""
 
+        $.ajax({
+            type: "POST",
+            url: url,
+            //amount
+
+            //error something
+
+        }).done(function(data){
+            //update the progress bar
+            // or show error
+            updateProgressBarPercentage();
+        })   
     }
 
     //update the progress bar on the page
@@ -22,8 +35,6 @@ $(document).ready(function(){
     }
 
     $("#water-container-s").click(function (){
-        console.log("Small container pressed");
-
         adjustUserWaterAmount(225);
         percentage = getUserPercentage();
         updateProgressBarPercentage(percentage);
