@@ -48,11 +48,12 @@ def add_user():
         #     flash("Some error occurred while attempting to add the user to the datbase, please try again.")
         #     return redirect(url_for("admin.add_user"))
         return redirect(url_for("admin.view_users"))
-    return render_template("user/user.html", 
-        title="Add New User", 
-        form=form, 
-        add_user=True
+    return render_template("user/user.html",
+        title="Add New User",
+        form=form,
+        add_user=True,
     )
+
 
 @admin.route("/users/<int:id>/edit", methods=["GET", "POST"])
 def edit_user(id):
@@ -142,6 +143,7 @@ def add_plant():
         form=form, 
         add_plant=True,
     )
+
 
 @admin.route("/plants/<int:id>/edit", methods=["GET", "POST"])
 def edit_plant(id):
